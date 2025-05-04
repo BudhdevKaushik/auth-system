@@ -1,0 +1,81 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h3 class="text-center mb-0">Login</h3>
+        </div>
+        <div class="card-body p-4">
+          <% if (typeof success !== 'undefined' && success) { %>
+          <div class="alert alert-success"><%= success %></div>
+          <% } %> <% if (typeof errors !== 'undefined' && errors.general) { %>
+          <div class="alert alert-danger"><%= errors.general %></div>
+          <% } %>
+
+          <form action="/login" method="POST">
+            <div class="mb-3">
+              <label for="usernameOrEmail" class="form-label"
+                >Username or Email</label
+              >
+              <input
+                type="text"
+                class="form-control <%= errors.usernameOrEmail ? 'is-invalid' : '' %>"
+                id="usernameOrEmail"
+                name="usernameOrEmail"
+                required
+                placeholder="Enter your username or email"
+                value="<%= typeof usernameOrEmail !== 'undefined' ? usernameOrEmail : '' %>"
+              />
+
+              <% if (errors.usernameOrEmail) { %>
+              <div class="invalid-feedback"><%= errors.usernameOrEmail %></div>
+              <% } %>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control <%= errors.password ? 'is-invalid' : '' %>"
+                id="password"
+                name="password"
+                required
+                placeholder="Enter your password"
+              />
+
+              <% if (errors.password) { %>
+              <div class="invalid-feedback"><%= errors.password %></div>
+              <% } %>
+            </div>
+
+            <div class="mb-3">
+              <div class="recaptcha-container">
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="<%= recaptchaSiteKey %>"
+                ></div>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+
+          <div class="text-center mt-3">
+            <p class="mb-0">
+              Don't have an account?
+              <a
+                href="/register"
+                onclick="event.preventDefault(); window.location.href='/register';"
+                >Register here</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>
