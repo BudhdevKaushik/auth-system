@@ -32,7 +32,7 @@ A full-stack user authentication system built with Node.js, Express, EJS, Postgr
 
 1. Clone the repo
 
-git clone https://github.com/your-username/auth-system.git
+git clone https://github.com/BudhdevKaushik/auth-system.git
 cd auth-system
 
 2. Install dependencies
@@ -74,7 +74,6 @@ CREATE TABLE users (
 ▶️ Running the App
 
 npm run dev
-
 
 App will be available at: http://localhost:3000
 
